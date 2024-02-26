@@ -6,8 +6,6 @@ import ligasRoutes from "./routes/ligas.routes";
 const app=express();
 
 
-
-
 app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api/equipos",equiposRoutes);
