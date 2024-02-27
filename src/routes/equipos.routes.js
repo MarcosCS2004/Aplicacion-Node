@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { methods as equiposController } from "../controllers/equipos.controller";
-import multer from "multer";
+//import multer from "multer";
 
 const router = Router()
 //const upload = multer({dest:'static/'});

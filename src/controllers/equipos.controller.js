@@ -1,5 +1,5 @@
 import {getConnection} from "./../database/database"
-const fs = require('node:fs');
+//const fs = require('node:fs');
 
 
 const getEquipos = async(req,res)=>{
@@ -135,12 +135,12 @@ const deleteEquipo = async(req,res)=>{
     
 };
 
-function saveImage(file){
+/*function saveImage(file){
     const newPath = `./static/${file.originalname}`;
     fs.renameSync(file.path, newPath)
     return newPath
       
-}
+}*/
 
 export const methods = {
     getEquipos,
