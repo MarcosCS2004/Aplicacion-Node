@@ -1,7 +1,6 @@
 import {getConnection} from "./../database/database"
 //const fs = require('node:fs');
 
-
 const getEquipos = async(req,res)=>{
     try{
     const connection= await getConnection();
@@ -48,13 +47,8 @@ const addEquipo = async (req, res) => {
             return res.status(400).json({ message: "Requisitos inválidos" });
         }
 
-        const foto = req.file;
 
-        await saveImage(foto);
-
-        const imagen = foto.originalname;
-
-        const equipo = { nombre, anio_de_fundacion, imagen, foto, liga_id };
+        const equipo = { nombre, anio_de_fundacion, liga_id };
         const connection = await getConnection();
         const [count] = await connection.query('SELECT COUNT(*) FROM liga WHERE ID = ?', [liga_id]);
         const countValue = count['COUNT(*)']; 
@@ -96,11 +90,7 @@ const updateEquipo = async (req, res) => {
             return res.status(400).json({ message: "Requisitos inválidos" });
         }
 
-        const foto = req.file;
-        saveImage(foto);
-        const imagen =  foto.originalname;
-
-        const equipo = { nombre, anio_de_fundacion, imagen, foto, liga_id };
+        const equipo = { nombre, anio_de_fundacion, liga_id };
         const connection = await getConnection();
         const result = await connection.query("UPDATE equipo SET ? WHERE id = ?", [equipo, id]);
         const [count] = await connection.query('SELECT COUNT(*) FROM liga WHERE ID = ?', [liga_id]);
@@ -134,6 +124,7 @@ const deleteEquipo = async(req,res)=>{
     }
     
 };
+
 
 /*function saveImage(file){
     const newPath = `./static/${file.originalname}`;
